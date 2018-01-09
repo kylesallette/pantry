@@ -16,14 +16,31 @@ class PantryTest < Minitest::Test
     assert_equal 0, pantry.stock.count
   end
 
-  def check_stock_for_not_added_item_is_0
+  def test_check_stock_for_not_added_item_is_0
     pantry = Pantry.new
 
     assert_equal 0, pantry.stock_check("Cheese")
   end
 
+  def test_pantry_can_be_restocked
+    pantry = Pantry.new
 
+    pantry.restock("cheese", 10)
 
+    assert_equal 10 , pantry.stock_check("cheese")
+  end
+
+  def test_can_add_multiple_items_to_pantry
+    pantry = Pantry.new
+
+    pantry.restock("cheese", 10)
+    pantry.restock("peanuts", 40)
+    pantry.restock("candy", 150)
+
+    assert_equal 10 , pantry.stock_check("cheese")
+    assert_equal 40 , pantry.stock_check("peanuts")
+    assert_equal 150 , pantry.stock_check("candy")
+  end
 
 
 end
