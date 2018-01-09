@@ -1,4 +1,5 @@
 require './lib/recipe'
+require 'pry'
 
 class Pantry
 
@@ -40,15 +41,18 @@ class Pantry
   end
 
   def what_can_i_make
-    selcted_items = cookbook.select do |recipe|
+    selected_items = cookbook.select do |recipe|
      recipe.ingredients.select { |ingredient, quantity| stock_check(ingredient) < quantity}.empty?
    end
-   selcted_items.map(&:name)
+   selected_items.map(&:name)
   end
 
   def how_many_can_i_make
+    @stock.extract!(what_can_i_make.to_sym)
 
-  end 
+    #need to take the keys returned from what i can make and get values
+    #then conpair to what stock i have
+  end
 
 
 end
