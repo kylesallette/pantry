@@ -16,6 +16,12 @@ class PantryTest < Minitest::Test
     assert_equal 0, pantry.stock.count
   end
 
+  def test_pantry_starts_a_empty_hash
+    pantry = Pantry.new
+
+    assert_equal ({}), pantry.stock
+  end
+
   def test_check_stock_for_not_added_item_is_0
     pantry = Pantry.new
 
@@ -51,6 +57,34 @@ class PantryTest < Minitest::Test
     recipe.add_ingredient("Flour", 20)
 
     assert_equal ({"Cheese"=>20, "Flour"=>20}), recipe.ingredients
+  end
+
+  def test_can_add_multiple_recipes
+    pantry = Pantry.new
+    recipe_1 = Recipe.new("Cheese Pizza")
+    recipe_2 = Recipe.new("Margarita")
+
+    recipe_1.add_ingredient("Cheese", 20)
+    recipe_1.add_ingredient("Flour", 20)
+
+    recipe_2.add_ingredient("salt", 10)
+    recipe_2.add_ingredient("Tequila", 100)
+    recipe_2.add_ingredient("Limes", 20)
+
+    assert_equal ({"Cheese"=>20, "Flour"=>20}), recipe_1.ingredients
+    assert_equal ({"salt"=>10, "Tequila"=>100, "Limes"=>20}), recipe_2.ingredients
+  end
+
+  def test_shopping_cart_starts_empty_hash
+    pantry = Pantry.new
+
+    assert_equal ({}), pantry.shopping_list
+  end
+
+  def test_shopping_cart_starts_at_0
+    pantry = Pantry.new
+
+    assert_equal 0, pantry.shopping_list.count
   end
 
 
