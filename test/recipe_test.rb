@@ -26,7 +26,7 @@ class RecipeTest < Minitest::Test
   def test_it_exists
     recipe = Recipe.new("pizza")
 
-    assert_instance_of Pizza, pizza
+    assert_instance_of Recipe, recipe
   end
 
   def test_can_make_recipe
@@ -35,19 +35,8 @@ class RecipeTest < Minitest::Test
     recipe_1.add_ingredient("Cheese", 20)
     recipe_1.add_ingredient("Flour", 20)
 
-    assert_equal ({"Cheese"=>20, "Flour"=>20}), recipe.ingredients
+    assert_equal ({"Cheese"=>20, "Flour"=>20}), recipe_1.ingredients
   end
-
-  def test_can_make_multiple_recipes
-    recipe_1 = Recipe.new("Cheese Pizza")
-    recipe_2 = Recipe.new("Margarita")
-
-    recipe_1.add_ingredient("Cheese", 20)
-    recipe_1.add_ingredient("Flour", 20)
-
-    recipe_2.add_ingredient("salt", 10)
-    recipe_2.add_ingredient("Tequila", 100)
-    recipe_2.add_ingredient("Limes", 20)
 
 
 
