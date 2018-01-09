@@ -1,3 +1,5 @@
+require './lib/recipe'
+
 class Pantry
 
   attr_reader :stock
@@ -12,7 +14,7 @@ class Pantry
 
   def restock(item, amount)
     @stock[item] += amount
-  end  
+  end
 
 
 
