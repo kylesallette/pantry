@@ -92,7 +92,7 @@ class PantryTest < Minitest::Test
     recipe_1.add_ingredient("Cheese", 20)
     recipe_1.add_ingredient("Flour", 20)
 
-    add_to_shopping_list(recipe_1)
+    pantry.add_to_shopping_list(recipe_1)
 
     assert_equal ({"Cheese"=>20, "Flour"=>20}), pantry.shopping_list
   end
@@ -108,6 +108,30 @@ class PantryTest < Minitest::Test
     recipe_2.add_ingredient("salt", 10)
     recipe_2.add_ingredient("Tequila", 100)
     recipe_2.add_ingredient("Limes", 20)
+
+    pantry.add_to_shopping_list(recipe_1)
+    pantry.add_to_shopping_list(recipe_2)
+
+    assert_equal ({"Cheese"=>20, "Flour"=>20,"salt"=>10, "Tequila"=>100, "Limes"=>20}), pantry.shopping_list
+  end
+
+  def test_you_can_print_the_shopping_list
+    skip
+    pantry = Pantry.new
+    recipe_1 = Recipe.new("Cheese Pizza")
+    recipe_2 = Recipe.new("Margarita")
+
+    recipe_1.add_ingredient("Cheese", 20)
+    recipe_1.add_ingredient("Flour", 20)
+
+    recipe_2.add_ingredient("salt", 10)
+    recipe_2.add_ingredient("Tequila", 100)
+    recipe_2.add_ingredient("Limes", 20)
+
+    pantry.add_to_shopping_list(recipe_1)
+    pantry.add_to_shopping_list(recipe_2)
+  end
+
 
 
 

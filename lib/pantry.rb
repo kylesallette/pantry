@@ -19,10 +19,9 @@ class Pantry
   end
 
   def add_to_shopping_list(recipe)
-
+    recipe.ingredients.each do |item, amount|
+      @shopping_list[item] += amount
+    end
   end
-
-
-
 
 end
