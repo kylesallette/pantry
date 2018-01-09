@@ -49,9 +49,6 @@ class Pantry
 
   def how_many_can_i_make
     @stock.extract!(what_can_i_make.to_sym)
-
-    #need to take the keys returned from what i can make and get values
-    #then conpair to what stock i have
   end
 
 
