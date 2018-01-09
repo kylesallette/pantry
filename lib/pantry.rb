@@ -3,11 +3,13 @@ require './lib/recipe'
 class Pantry
 
   attr_reader :stock,
-              :shopping_list
+              :shopping_list,
+              :printed_list
 
   def initialize
     @stock = Hash.new(0)
     @shopping_list = Hash.new(0)
+    @printed_list = ""
   end
 
   def stock_check(item)
@@ -22,6 +24,11 @@ class Pantry
     recipe.ingredients.each do |item, amount|
       @shopping_list[item] += amount
     end
+  end
+
+  def print_shopping_list
+    @shopping_list.each do |item, amount|
+      @printed_list
   end
 
 end

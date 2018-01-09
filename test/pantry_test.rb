@@ -116,7 +116,6 @@ class PantryTest < Minitest::Test
   end
 
   def test_you_can_print_the_shopping_list
-    skip
     pantry = Pantry.new
     recipe_1 = Recipe.new("Cheese Pizza")
     recipe_2 = Recipe.new("Margarita")
@@ -131,10 +130,9 @@ class PantryTest < Minitest::Test
     pantry.add_to_shopping_list(recipe_1)
     pantry.add_to_shopping_list(recipe_2)
 
+    expected = "Cheese: 20\nFlour: 20\nsalt: 10\nTequila: 100\nLimes: 20\n"
 
+    assert_equal expected, pantry.print_shopping_list
   end
-
-
-
 
 end
