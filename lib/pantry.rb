@@ -35,5 +35,17 @@ class Pantry
     printed_list
   end
 
+  def add_to_cookbook(recipe)
+    @cookbook << recipe
+  end
+
+  def what_can_i_make
+    selcted_items = cookbook.select do |recipe|
+     recipe.ingredients        #have to iterate through and compare if amoumt if more
+                               #then i have in stock_check
+                               
+    end
+  end
+
 
 end
