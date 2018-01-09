@@ -50,7 +50,6 @@ class PantryTest < Minitest::Test
   end
 
   def test_can_add_a_recipe
-    pantry = Pantry.new
     recipe = Recipe.new("Cheese Pizza")
 
     recipe.add_ingredient("Cheese", 20)
@@ -60,7 +59,6 @@ class PantryTest < Minitest::Test
   end
 
   def test_can_add_multiple_recipes
-    pantry = Pantry.new
     recipe_1 = Recipe.new("Cheese Pizza")
     recipe_2 = Recipe.new("Margarita")
 
@@ -86,6 +84,31 @@ class PantryTest < Minitest::Test
 
     assert_equal 0, pantry.shopping_list.count
   end
+
+  def test_can_add_recipe_to_shopping_list
+    pantry = Pantry.new
+    recipe_1 = Recipe.new("Cheese Pizza")
+
+    recipe_1.add_ingredient("Cheese", 20)
+    recipe_1.add_ingredient("Flour", 20)
+
+    add_to_shopping_list(recipe_1)
+
+    assert_equal ({"Cheese"=>20, "Flour"=>20}), pantry.shopping_list
+  end
+
+  def test_can_add_multiple_recipes_to_shopping_list
+    pantry = Pantry.new
+    recipe_1 = Recipe.new("Cheese Pizza")
+    recipe_2 = Recipe.new("Margarita")
+
+    recipe_1.add_ingredient("Cheese", 20)
+    recipe_1.add_ingredient("Flour", 20)
+
+    recipe_2.add_ingredient("salt", 10)
+    recipe_2.add_ingredient("Tequila", 100)
+    recipe_2.add_ingredient("Limes", 20)
+
 
 
 end
