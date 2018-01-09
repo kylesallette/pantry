@@ -130,6 +130,8 @@ class PantryTest < Minitest::Test
 
     pantry.add_to_shopping_list(recipe_1)
     pantry.add_to_shopping_list(recipe_2)
+
+
   end
 
 
