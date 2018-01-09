@@ -41,11 +41,14 @@ class Pantry
 
   def what_can_i_make
     selcted_items = cookbook.select do |recipe|
-     recipe.ingredients        #have to iterate through and compare if amoumt if more
-                               #then i have in stock_check
-                               
-    end
+     recipe.ingredients.select { |ingredient, quantity| stock_check(ingredient) < quantity}.empty?
+   end
+   selcted_items.map(&:name)
   end
+
+  def how_many_can_i_make
+
+  end 
 
 
 end
