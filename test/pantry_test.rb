@@ -135,4 +135,45 @@ class PantryTest < Minitest::Test
     assert_equal expected, pantry.print_shopping_list
   end
 
+  def test_what_cookbook_starts_as_empty_array
+    pantry = Pantry.new
+
+    assert_equal [], pantry.cookbook
+  end
+
+  def test_what_cookbook_count_starts_at_0
+    pantry = Pantry.new
+
+    assert_equal 0, pantry.cookbook.count
+  end
+
+  def test_what_can_i_make_show_correct_recipes
+    pantry = Pantry.new
+
+    r1 = Recipe.new("Cheese Pizza")
+    r1.add_ingredient("Cheese", 20)
+    r1.add_ingredient("Flour", 20)
+
+    r2 = Recipe.new("Pickles")
+    r2.add_ingredient("Brine", 10)
+    r2.add_ingredient("Cucumbers", 30)
+
+    r3 = Recipe.new("Peanuts")
+    r3.add_ingredient("Raw nuts", 10)
+    r3.add_ingredient("Salt", 10)
+
+    pantry.add_to_cookbook(r1)
+    pantry.add_to_cookbook(r2)
+    pantry.add_to_cookbook(r3)
+
+    pantry.restock("Cheese", 10)
+    pantry.restock("Flour", 20)
+    pantry.restock("Brine", 40)
+    pantry.restock("Cucumbers", 120)
+    pantry.restock("Raw nuts", 20)
+    pantry.restock("Salt", 20)
+
+
+  end
+
 end

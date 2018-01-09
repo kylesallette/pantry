@@ -4,11 +4,13 @@ class Pantry
 
   attr_reader :stock,
               :shopping_list,
+              :cookbook,
               :printed_list
 
   def initialize
     @stock = Hash.new(0)
     @shopping_list = Hash.new(0)
+    @cookbook = []
     @printed_list = ""
   end
 
@@ -28,7 +30,10 @@ class Pantry
 
   def print_shopping_list
     @shopping_list.each do |item, amount|
-      @printed_list
+      @printed_list << "#{item}: #{amount}\n"
+    end
+    printed_list
   end
+
 
 end
